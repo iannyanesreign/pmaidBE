@@ -3,9 +3,10 @@ import { readFileSync } from 'fs';
 
 const config = {
   env: process.env.NODE_ENV || 'development',
-  sslPort: 3000,
+  sslPort: 4444,
   appName: process.env.APPLICATION_NAME,
   httpOptions: {},
+  mongoURL: process.env.MONGO_URL,
   httpsOptions: {
     key: process.env.HTTPS_KEY || readFileSync(
       path.join(__dirname, '..', '..', 'etc', 'ssl', 'server.key'),
@@ -17,6 +18,7 @@ const config = {
   jira: {
     endpoint: process.env.JIRA_ENDPOINT,
     basicAuth: process.env.JIRA_BASIC_AUTH_TOKEN,
+    product: process.env.JIRA_PRODUCT,
   },
 };
 

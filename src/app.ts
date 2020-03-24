@@ -3,7 +3,7 @@ import express from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
 import { logger } from '@reignmodule/utils';
-
+import "reflect-metadata";
 import config from './config';
 import { errors } from './utils/errors';
 // Controllers (route handlers)
@@ -11,7 +11,11 @@ import { HealthRoutes } from './apps/health/routes';
 import { UserRoutes } from './apps/core/routes/user-routes';
 import { SwaggerRoutes } from './apps/docs/routes';
 import { JiraRoutes } from './apps/core/routes/jira-routes';
+import {buildPrefix} from "@reignmodule/utils/utils/logger";
+import * as path from "path";
+import {createConnection} from "typeorm";
 
+const logParentPrefix = path.basename(__dirname, '.ts');
 // Create Express server
 class Server {
   public app: express.Application;
@@ -20,6 +24,7 @@ class Server {
     this.app = express();
 
     this.config();
+    this.databaseSetup();
     this.swaggerSetup();
     this.routes();
     this.errorSetup();
@@ -45,6 +50,17 @@ class Server {
     // Allow Cross-Origin Resource Sharing and basic security
     this.app.use(cors());
     this.app.use(helmet());
+  }
+
+  private databaseSetup(): void {
+    createConnection()
+        .then(() => {
+          return logger.info(`Successfully connected to database`);
+        })
+        .catch((err: any) => {
+          logger.error(`Fatal Postgres connection: ${err}:${err.stack}`);
+          return process.exit(1);
+        });
   }
 
   private swaggerSetup() {

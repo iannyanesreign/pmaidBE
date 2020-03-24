@@ -1,5 +1,5 @@
 {
-  "name": "template-app",
+  "name": "jira-report-app",
   "version": "0.0.1",
   "description": "Template app for reign developers",
   "repository": {
@@ -9,15 +9,16 @@
   "author": "felipe@reigndesign.com",
   "license": "MIT",
   "scripts": {
-    "start": "APPLICATION_NAME=template-app node ./index.js",
-    "start:dev": "set debug=* && export NODE_ENV=development && export APPLICATION_NAME=template-app && ts-node-dev --respawn --transpileOnly ./src/index.ts",
+    "start": "APPLICATION_NAME=jira-report-app node ./index.js",
+    "start:dev": "set debug=* && export NODE_ENV=development && export APPLICATION_NAME=jira-report-app && ts-node-dev --respawn --transpileOnly ./src/index.ts",
     "build": "rm -rf ./dist && tsc",
     "lint": "tslint -c tslint.json -p tsconfig.json",
-    "test": "export NODE_ENV=test APPLICATION_NAME=template-app && nyc --reporter=html mocha --timeout 10000 --require ts-node/register --recursive ./tests/*.ts ./tests/**/*.test.ts --reporter=list --exit",
+    "test": "export NODE_ENV=test APPLICATION_NAME=jira-report-app && nyc --reporter=html mocha --timeout 10000 --require ts-node/register --recursive ./tests/*.ts ./tests/**/*.test.ts --reporter=list --exit",
     "test:debug": "export NODE_ENV=test DEBUG_TEST=true && nyc --reporter=html mocha --timeout 10000 --require ts-node/register --recursive ./tests/**/*.ts --reporter=list --exit"
   },
   "dependencies": {
     "@reignmodule/utils": "^1.0.2",
+    "@types/mongoose": "^5.7.2",
     "@types/request-promise": "^4.1.45",
     "async": "^2.6.0",
     "axios": "^0.18.0",
@@ -33,12 +34,17 @@
     "helmet": "^3.18.0",
     "lodash": "^4.17.5",
     "lusca": "^1.5.2",
+    "moment": "^2.24.0",
+    "mongoose": "^5.9.2",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
+    "pg": "^7.18.2",
+    "reflect-metadata": "^0.1.13",
     "request": "^2.88.2",
     "request-promise": "^4.2.5",
     "swagger-jsdoc": "^3.2.9",
     "swagger-ui-express": "^4.0.6",
+    "typeorm": "^0.2.24",
     "typings": "^2.1.1"
   },
   "devDependencies": {
@@ -58,7 +64,7 @@
     "@types/lodash": "^4.14.91",
     "@types/lusca": "^1.5.0",
     "@types/morgan": "^1.7.35",
-    "@types/node": "^9.4.6",
+    "@types/node": "^9.6.55",
     "@types/passport": "^0.4.3",
     "@types/passport-local": "^1.0.32",
     "@types/request": "^2.47.0",

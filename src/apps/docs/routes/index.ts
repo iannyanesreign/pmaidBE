@@ -10,14 +10,30 @@ const options = {
     info: {
       title: config.appName,
       version: '1.0.0',
-      description: 'Api Docs for Ripley Devoluciones',
+      description: 'Api Docs for Jira Report App',
     },
     basePath: '/',
     schemes: ['http', 'https'],
     tags: [
       {
-        name: 'core',
-        description: 'Core app',
+        name: 'projects',
+        description: "Everything about all projects of the jira instance"
+      },
+      {
+        name: 'epics',
+        description: "Everything about a project's epics"
+      },
+      {
+        name: 'issuetypes',
+        description: "Everything about a project's issue types"
+      },
+      {
+        name: 'status-graph',
+        description: 'Requests to display the status count graph',
+      },
+      {
+        name: 'load',
+        description: 'All the requests to the Jira API to update the database',
       },
     ],
   },
