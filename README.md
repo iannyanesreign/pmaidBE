@@ -9,6 +9,11 @@ export JIRA_ENDPOINT="{Jira Service URL}"
 export JIRA_PRODUCT="{Jira Software|Jira Server}"
 ```
 
+* Once the .env file is done, run the following command
+```
+source .env
+```
+
 # Version and dependencies
 
 * install node version using a node version manager like nvm
@@ -78,12 +83,12 @@ npm run build
 # Load Data
 * Use the load projects route to load every project in the jira instance into the database
 ```http request
-https://{your-url}/jira/load/projects
+POST https://{your-url}/jira/load/projects
 ```
 * To upload all the data from a single project (Issues,changelog,etc.) use the single project load
 url AFTER loading all the projects
 ```http request
-https://{your-url}/jira/load/project/{projectKey}
+POST https://{your-url}/jira/load/project/{projectKey}
 ```
 # API Docs
 * Access the API Docs of the app by using this route
