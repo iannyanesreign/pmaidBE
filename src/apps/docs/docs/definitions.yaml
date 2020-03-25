@@ -1,0 +1,69 @@
+securityDefinitions:
+  Bearer:
+    type: apiKey
+    name: Authorization
+    in: header
+definitions:
+  Error:
+    type: object
+    properties:
+      code:
+        type: string
+        example: "UNAUTHORIZED"
+      status:
+        type: number
+        example: 403
+      description:
+        type: string
+        example: "Unauthorized"
+      metadata:
+        type: object
+        example: {}
+  User:
+    type: object
+    properties:
+      name:
+        type: string
+        description: First name
+  Project:
+    type: object
+    properties:
+      id:
+        type: number
+      key:
+        type: string
+        description: project Key
+      lastLoad:
+        type: string
+        format: date
+        description: date of when project data was last updated/loaded
+  Epic:
+    type: object
+    properties:
+      id:
+        type: number
+      key:
+        type: string
+        description: epic Issue Key
+      projectId:
+        type: number
+        description: id of the project that the epic issue belongs to
+  Issuetype:
+    type: object
+    properties:
+      id:
+        type: number
+      name:
+        type: string
+        description: name of the issue type
+      workflowIndex:
+        type: number
+        description: index that determines the unique workflow that the issue type follows
+      defaultStatus:
+        type: string
+        description: the initial status of newly created issues of this issue type
+      projectId:
+        type: number
+        description: id of the project that the issue type belongs to
+
+
