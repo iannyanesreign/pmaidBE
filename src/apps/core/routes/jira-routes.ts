@@ -198,7 +198,7 @@ export class JiraRoutes extends BaseRouter {
      *     tags:
      *       - load
      *     summary: "Load all the project's data into database"
-     *     description: "Loads all the projects of the Jira Instance into the database by calling the Jira REST API"
+     *     description: "Loads all the data of the Jira Project into the database by calling the Jira REST API"
      *     produces:
      *       - application/json
      *     consumes:
