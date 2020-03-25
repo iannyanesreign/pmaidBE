@@ -8,6 +8,7 @@ export JIRA_BASIC_AUTH_TOKEN="Basic {AuthToken}"
 export JIRA_ENDPOINT="{Jira Service URL}"
 export JIRA_PRODUCT="{Jira Software|Jira Server}"
 ```
+* The AuthToken at the moment consists of a basic authentication token, for Jira Server, the token must be a base64 encoding of "username:password" of the user, for Jira Software the token must be a base64 encoding of "email:AuthToken" of the selected user, the AuthToken must be extracted from https://id.atlassian.com/manage/api-tokens
 
 * Once the .env file is done, run the following command
 ```
